@@ -8,22 +8,27 @@ TARGET = NEWS_System
 # Object files
 OBJS = main.o ICU.o NEWSCalculator.o
 
-# Default rule: build the executable
+# Header Dependencies (for tracking changes)
+HEADERS = Parameters.hpp Patient.hpp NEWSCalculator.hpp ICU.hpp \
+          Observer.hpp Dashboard.hpp Led.hpp
+
+# Default rule
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
 # Rules for object files
-main.o: main.cpp ICU.hpp
+# We add the new UI headers to dependencies so changes trigger a rebuild
+main.o: main.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-ICU.o: ICU.cpp ICU.hpp Patient.hpp NEWSCalculator.hpp Parameters.hpp
+ICU.o: ICU.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c ICU.cpp
 
 NEWSCalculator.o: NEWSCalculator.cpp NEWSCalculator.hpp Parameters.hpp
 	$(CXX) $(CXXFLAGS) -c NEWSCalculator.cpp
 
-# Clean rule to remove build artifacts
+# Clean rule
 clean:
 	rm -f $(OBJS) $(TARGET)
