@@ -8,9 +8,7 @@
 
 class Led : public Observer
 {
-private:
-    std::string currentHighest = "Low";
-
+protected:
     // Helper to determine risk priority for the Led
     int getRiskPriority(std::string risk)
     {
@@ -34,7 +32,8 @@ private:
         return "GREEN";
     }
 
-public:
+private:
+    std::string currentHighest = "Low";
     void update(int bedNum, std::string name, std::string risk, std::string time) override
     {
         // Simple logic: if this is a system reset (bed 0), force Low.
