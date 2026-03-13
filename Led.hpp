@@ -9,7 +9,7 @@
 class Led : public Observer
 {
 private:
-    std::string highestRisk = "Low";
+    std::string currentHighest = "Low";
 
     // Helper to determine risk priority for the Led
     int getRiskPriority(std::string risk)
@@ -37,12 +37,16 @@ private:
 public:
     void update(int bedNum, std::string name, std::string risk, std::string time) override
     {
-        // Logic to always show the highest risk among all patients
-        if (getRiskPriority(risk) >= getRiskPriority(highestRisk))
+        // Simple logic: if this is a system reset (bed 0), force Low.
+        // Otherwise, use the standard comparison logic.
+        if (bedNum == 0)
+            currentHighest = "Low";
+
+        if (getRiskPriority(risk) >= getRiskPriority(currentHighest))
         {
-            highestRisk = risk;
-            updateRiskLevel(getColor(highestRisk));
+            currentHighest = risk;
         }
+        updateRiskLevel(getColor(currentHighest));
     }
 
     void updateRiskLevel(std::string color)

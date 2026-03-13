@@ -10,6 +10,7 @@ class ICU
 private:
     Patient *beds[7];                  // Index 1-6
     std::vector<Observer *> observers; // List of UI elements
+    void refreshUI();                  // Helper to update Dashboard/LED after a removal
 public:
     ICU();
     ~ICU();
@@ -25,6 +26,8 @@ public:
             obs->update(bed, name, risk, time);
         }
     }
+
+    void dischargePatient();
 };
 
 #endif

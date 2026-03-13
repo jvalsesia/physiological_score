@@ -17,7 +17,12 @@ int main()
     char cmd;
     while (true)
     {
-        std::cout << "\n'n'-new 'h'-history 'a'-all 'x'-exit: ";
+
+        std::cout << "'n'-new: \n";       // Option for adding new scores
+        std::cout << "'h'-history: \n";   // Option for viewing patient history
+        std::cout << "'a'-all: \n";       // Option for viewing all patients
+        std::cout << "'d'-discharge: \n"; // Option for discharging patients
+        std::cout << "'x'-exit: \n";      // Option to exit the program
         std::cin >> cmd;
         if (cmd == 'x')
             break;
@@ -31,6 +36,9 @@ int main()
             break;
         case 'a':
             myICU.printAllPatients();
+            break;
+        case 'd':
+            myICU.dischargePatient();
             break;
         }
     }
