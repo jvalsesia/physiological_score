@@ -232,6 +232,7 @@ Total score determines risk level with special case for Low-Medium.
 
 ## Docker
 ```sh
+docker compose -f 'docker-compose.yml' up -d --build 
 docker start news_system_app
 docker exec -it news_system_app /app/NEWS_System
 ```
