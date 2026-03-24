@@ -10,7 +10,7 @@ rm -f NEWS_System
 
 # Build main application
 echo "Building main application..."
-g++ -std=c++11 -Wall -o NEWS_System main.cpp ICU.cpp NEWSCalculator.cpp
+g++ -std=c++23 -Wall -o NEWS_System main.cpp ICU.cpp NEWSCalculator.cpp
 
 # Build and run tests
 echo "Building test suite..."

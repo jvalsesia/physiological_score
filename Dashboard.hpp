@@ -5,6 +5,11 @@
 #include <iostream>
 #include <vector>
 
+// Led --> the derived class (subclass)
+// : --> inheritance operator
+// public --> inheritance access level
+// Observer --> the base class(parent)
+
 class Dashboard : public Observer
 {
 public:

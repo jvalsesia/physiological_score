@@ -6,6 +6,12 @@ Score NEWSCalculator::calculate(const Parameters &p)
     int total = 0;
     bool hasThreeInAny = false;
 
+    // auto: compiler deduces the type (lambda object type is anonymous).
+
+    // [&] : capture clause
+    //  - captures local variables from surrounding scope by reference.
+    //  - in this function, it allows checkScore to modify : total and hasThreeInAny
+
     auto checkScore = [&](int s)
     {
         total += s;
@@ -13,6 +19,8 @@ Score NEWSCalculator::calculate(const Parameters &p)
             hasThreeInAny = true;
     };
 
+    // So every time the code calls checkScore(3) or checkScore(2),
+    // it updates running score and remembers if any score was 3.
     if (p.respRate <= 8 || p.respRate >= 25)
         checkScore(3);
     else if (p.respRate >= 21)

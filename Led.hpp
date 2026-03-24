@@ -6,6 +6,11 @@
 #include <map>
 #include <string>
 
+// Led --> the derived class (subclass)
+// : --> inheritance operator
+// public --> inheritance access level
+// Observer --> the base class(parent)
+
 class Led : public Observer
 {
 protected:

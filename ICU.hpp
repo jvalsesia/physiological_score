@@ -8,6 +8,10 @@
 class ICU
 {
 private:
+    // Each bed can hold a pointer to a Patient
+    // It is an ICU structure holding up to 7 patient pointers,
+    // where each slot can dynamically reference different patients or be empty.
+
     Patient *beds[7];                  // Index 1-6
     std::vector<Observer *> observers; // List of UI elements
     void refreshUI();                  // Helper to update Dashboard/LED after a removal

@@ -57,6 +57,7 @@ void ICU::processNewScore()
     if (p.isValid())
     {
         Score res = NEWSCalculator::calculate(p);
+        // add score per bed
         beds[bed]->addScore(res);
         notifyObservers(bed, beds[bed]->getFullName(), res.riskLevel, res.timestamp);
         std::cout << "NEWS Score: " << res.value << ", Risk Level: " << res.riskLevel << "\n";
