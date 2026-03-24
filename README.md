@@ -230,6 +230,12 @@ Total score determines risk level with special case for Low-Medium.
 └── CodeDocumentation.md  # Detailed API docs
 ```
 
+## Docker
+```sh
+docker start news_system_app
+docker exec -it news_system_app /app/NEWS_System
+```
+
 ## Contributing
 
 ### Code Style

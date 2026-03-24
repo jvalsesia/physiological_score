@@ -1,0 +1,17 @@
+.git
+.gitignore
+build/
+*.o
+*.a
+*.so
+NEWS_System
+run_tests
+.DS_Store
+.vscode
+.idea
+*.md
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
